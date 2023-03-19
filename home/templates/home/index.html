@@ -1,0 +1,25 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="{% static '/index.css' %}">
+
+</head>
+<body>
+    {% for ques in quesList %}
+        {% comment %} <h1>The question is : <a href="/particular/{{ques.id}}">{{ques.question_text}}</a></h1> {% endcomment %}
+        {% comment %} <h1>The question is : <a href="{% url 'home:particularQues' ques.id %}">{{ques.question_text}}</a></h1> {% endcomment %}
+
+        <h1><span>{{ques.question_text}} -> 
+            <a href="{% url 'home:particularQues' ques.id %}"><button>VOTE</button></a>
+            <a href="{% url 'home:result' ques.id %}"><button>RESULT</button></a>
+        </span></h1>
+    {% endfor %}
+</body>
+</html>
